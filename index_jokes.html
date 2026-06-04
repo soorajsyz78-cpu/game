@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator - Get Random Jokes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎭 Joke Generator</h1>
+            <p class="subtitle">Get random jokes from multiple APIs</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="control-group">
+                    <label for="api-select">Select API:</label>
+                    <select id="api-select">
+                        <option value="jokeapi">JokeAPI</option>
+                        <option value="official">Official Joke API</option>
+                        <option value="random">Random.D API</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="category-group" style="display: none;">
+                    <label for="category-select">Category (JokeAPI only):</label>
+                    <select id="category-select">
+                        <option value="Any">Any</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Knock-Knock">Knock-Knock</option>
+                        <option value="General">General</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="count-input">Number of Jokes:</label>
+                    <input type="number" id="count-input" min="1" max="10" value="1">
+                </div>
+
+                <button id="get-joke-btn" class="btn btn-primary">Get Joke</button>
+                <button id="clear-cache-btn" class="btn btn-secondary">Clear Cache</button>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Fetching joke...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message hidden"></div>
+
+            <!-- Jokes Display Section -->
+            <section id="jokes-section" class="jokes-section hidden">
+                <div id="jokes-container" class="jokes-container"></div>
+            </section>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state">
+                <p>👈 Select an API and click "Get Joke" to start!</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🚀 Powered by multiple joke APIs</p>
+            <p class="timestamp" id="timestamp"></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
